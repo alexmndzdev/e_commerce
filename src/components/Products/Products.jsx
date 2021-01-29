@@ -9,7 +9,7 @@ const products = [
 	{ id: 2, name: 'Needles', description: 'acupuncture needles', price: '$10' }
 ]
 
-const Products = () => {
+const Products = ({ products }) => {
 	const classes = useStyles()
 
 	return (

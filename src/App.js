@@ -12,11 +12,11 @@ const App = () => {
 				useEffect(() => {
 					fetchProducts()
 				}, [])
-	console.log(products, 'PRODUCTS')
+
 				return (
 								<div>
 									<Navbar />
-									<Products />
+									<Products products={products}/>
 								</div>
 				)
 }
