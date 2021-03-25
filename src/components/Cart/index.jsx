@@ -1,7 +1,7 @@
 import { Typography, Container, Button, Grid } from '@material-ui/core'
 import React from 'react'
 import useStyles from './styles.js'
-import CartItem from './CartItem/CartItem'
+import CartItem from './CartItem'
 
 const Cart = ({ cart }) => {
 	const classes = useStyles()
