@@ -17,8 +17,30 @@ const App = () => {
 				}
 
 				const handleAddToCart = async (productId, qty) => {
-					const item = await commerce.cart.add(productId, qty)
-					setCart(item.cart)
+					const { cart } = await commerce.cart.add(productId, qty)
+					setCart(cart)
+				}
+
+				const handleUpdateCartQty = async (productId, quantity) => {
+					const { cart } = await commerce.cart.update(productId, { quantity })
+					setCart(cart)
+				}
+
+				const handleRemoveFromCart = async (productId) => {
+					const { cart } = await commerce.cart.remove(productId)
+					setCart(cart)
+				}
+
+				const handleEmptyCart = async () => {
+					const { cart } = await commerce.cart.empty()
+					setCart(cart)
+				}
+
+				const cartHandler = {
+					add: handleAddToCart,
+					update: handleUpdateCartQty,
+					remove: handleRemoveFromCart,
+					empty: handleEmptyCart
 				}
 
 				useEffect(() => {
@@ -32,10 +54,10 @@ const App = () => {
 									<Navbar totalItems={cart.total_items} />
 									<Switch>
 										<Route exact path='/'>
-											<Products products={products} onAddToCart={handleAddToCart} />
+											<Products products={products} onAddToCart={cartHandler.add} />
 										</Route>
 										<Route exact path='/cart'>
-											<Cart cart={cart} />
+											<Cart cart={cart} handler={cartHandler}/>
 										</Route>
 									</Switch>
 								</div>
