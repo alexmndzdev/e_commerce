@@ -39,9 +39,12 @@ const Cart = ({ cart, handler }) => {
 					>
 						Vaciar carrito
 					</Button>
-					<Button className="classes.checkoutButton" size="large" type="button" variant="contained" color="primary">
-						Ir a caja
-					</Button>
+					{/*<Link to={`https://api.whatsapp.com/send?phone=+523121152021&text=${data}`} className={classes.link}>*/}
+					<a href={`https://api.whatsapp.com/send?phone=+523121152021&text=Hola_mamasita_te_encargo_una_cajetilla`} className={classes.link}>
+						<Button className="classes.checkoutButton" size="large" type="button" variant="contained" color="primary">
+							Ir a caja
+						</Button>
+					</a>
 				</div>
 			</div>
 		</>
