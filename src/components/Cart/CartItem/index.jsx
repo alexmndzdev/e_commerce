@@ -1,6 +1,7 @@
 import React from 'react'
 import useStyles from './styles'
 import { Card, CardMedia, CardContent, CardActions, Typography, Button } from '@material-ui/core'
+import { Add, Remove } from '@material-ui/icons'
 
 const CartItem = ({ item, onUpdate, onRemove }) => {
 	const classes = useStyles()
@@ -13,9 +14,19 @@ const CartItem = ({ item, onUpdate, onRemove }) => {
 			</CardContent>
 			<CardActions className={classes.cardActions}>
 				<div className={classes.buttons}>
-					<Button type="button" size="small" onClick={() => onUpdate(item.id, item.quantity - 1)} >-</Button>
+					<Button
+						type="button"
+						size="small"
+						onClick={() => onUpdate(item.id, item.quantity - 1)} >
+						<Remove/>
+					</Button>
 					<Typography>{item.quantity}</Typography>
-					<Button type="button" size="small" onClick={() => onUpdate(item.id, item.quantity + 1)} >+</Button>
+					<Button
+						type="button"
+						size="small"
+						onClick={() => onUpdate(item.id, item.quantity + 1)} >
+						<Add/>
+					</Button>
 				</div>
 				<Button variant="contained" type="button" color="secondary" onClick={() => onRemove(item.id)} >Remover</Button>
 			</CardActions>
