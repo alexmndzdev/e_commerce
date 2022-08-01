@@ -1,27 +1,43 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom'
-import { AppBar, Toolbar, IconButton, Typography, Badge } from '@material-ui/core'
-import useStyles from './styles.js'
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Link from '@material-ui/core/Link';
+//import InstagramIcon from '@mui/icons-material/Instagram';
+import { Instagram, PhoneAndroid } from '@material-ui/icons'
 
-const Footer = ({ totalItems }) => {
-				const classes = useStyles()
-				const location = useLocation()
-				return  (
-					<>
-						<AppBar position="bottom fixed" className={classes.AppBar} color="inherit">
-							<Toolbar>
-									<Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">Magnolia</Typography>
-									<div className={classes.grow} />
-									<div className={classes.button}>
-										<IconButton component={Link} to="cart" aria-label="Show cart items" color="inherit">
-											<Badge badgeContent={totalItems} color="secondary">
-											</Badge>
-										</IconButton>
-									</div>
-							</Toolbar>
-						</AppBar>
-					</>
-				)
+export default function Footer() {
+  return (
+    <footer>
+      <Box
+        px={{ xs: 3, sm: 10 }}
+        py={{ xs: 5, sm: 8 }}
+        bgcolor="#567aac"
+        color="white"
+      >
+        <Container maxWidth="lg">
+          <Grid container spacing={5}>
+            <Grid item xs={12} sm={4} offset={{ sm: 8 }}>
+              <Box borderBottom={1}>Encuentranos</Box>
+              <ul>
+                <li>
+                  <Link href="https://www.instagram.com/magnolia_herbal/" color="inherit">
+                    <Instagram/>
+                  </Link>
+                </li>
+                <li>
+									<PhoneAndroid/>
+                  <span>3121152021</span>
+                </li>
+                <li>
+                  <Link href="/faq" color="inherit">
+                    Preguntas Frecuentes
+                  </Link>
+                </li>
+              </ul>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+    </footer>
+  );
 }
-																				
-export default Footer
