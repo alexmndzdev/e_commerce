@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Stepper, Step, StepLabel, Typography } from '@material-ui/core'
+import { Stepper, Step, StepLabel, Typography } from '@mui/material'
 import useStyles from './styles'
 
 const steps = ['Dirección de envio', 'Detalle de Pago']

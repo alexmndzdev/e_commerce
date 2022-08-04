@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
+import { Grid, Typography  } from '@mui/material'
 
 import Product from './Product'
 import useStyles from './style'
@@ -11,8 +11,11 @@ const Products = ({ products, onAddToCart }) => {
 		<main className={classes.content}>
 			<div className={classes.toolbar} />
 			<div className={classes.category} justify='center'>
-				<h3> CAJETILLAS </h3>
-				<p> Contienen 10 cigarrillos con las siguientes mezclas herbales </p>
+				<Typography variant="h3" align="center">Cajetillas</Typography>
+				<Typography variant='body2'>
+					Contienen 10 cigarrillos con las siguientes mezclas herbales
+				</Typography>
+				<br/>
 			</div>
 			<Grid container justifyContent='center' spacing={4}>
 				{products.map(product => (

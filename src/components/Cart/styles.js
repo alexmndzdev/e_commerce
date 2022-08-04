@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 
 export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
   },
   emptyButton: {
     minWidth: '150px',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       marginBottom: '5px',
     },
     [theme.breakpoints.up('xs')]: {

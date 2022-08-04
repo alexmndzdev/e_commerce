@@ -1,7 +1,7 @@
 import React from 'react'
 import useStyles from './styles'
-import { Card, CardMedia, CardContent, CardActions, Typography, Button } from '@material-ui/core'
-import { Add, Remove } from '@material-ui/icons'
+import { Card, CardMedia, CardContent, CardActions, Typography, Button } from '@mui/material'
+import { Add, Remove } from '@mui/icons-material'
 
 const CartItem = ({ item, onUpdate, onRemove }) => {
 	const classes = useStyles()

@@ -1,4 +1,6 @@
-import { makeStyles, alpha } from '@material-ui/core/styles';
+import { alpha } from '@mui/material/styles';
+
+import makeStyles from '@mui/styles/makeStyles';
 
 const drawerWidth = 0;
 
@@ -10,6 +12,9 @@ export default makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
+  },
+  toolbar: {
+    background: '#9fa8c7'
   },
   title: {
     flexGrow: 1,
@@ -58,7 +63,7 @@ export default makeStyles((theme) => ({
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
