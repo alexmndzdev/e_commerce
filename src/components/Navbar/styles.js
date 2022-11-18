@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
     background: '#9fa8c7'
   },
   title: {
-    flexGrow: 1,
+    //flexGrow: 1, removed in order to be the image the only thing clickeable
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
