@@ -3,7 +3,7 @@ import './Faq.css';
 import useStyles from './styles.js'
 
 const Faq = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}> 
       <Container justifyContent='center' spacing={4}>
@@ -63,4 +63,4 @@ const Faq = () => {
   );
 };
 
-export default Faq;
+export default Faq
