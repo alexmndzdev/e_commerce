@@ -1,5 +1,6 @@
 import { Typography, Box, Container }  from '@mui/material';
-import './Faq.css';
+import React from 'react'
+//import './Faq.css';
 import useStyles from './styles.js'
 
 const Faq = () => {
@@ -60,7 +61,7 @@ const Faq = () => {
         </Typography>
       </Container>
     </Box>
-  );
-};
+  )
+}
 
 export default Faq
