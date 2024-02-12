@@ -1,6 +1,6 @@
-import { Typography, Box, Container }  from '@mui/material';
 import React from 'react'
-//import './Faq.css';
+import { Typography, Box, Container }  from '@mui/material'
+//import './Faq.css'
 import useStyles from './styles.js'
 
 const Faq = () => {

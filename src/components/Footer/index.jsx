@@ -1,9 +1,10 @@
 import { Grid, Box, Link, Typography, Container, AppBar }  from '@mui/material';
+import { Link  as LinkRouter } from 'react-router-dom'
 import { Instagram, WhatsApp } from '@mui/icons-material'
 import useStyles from './styles.js'
 
 export default function Footer() {
-	const classes = useStyles();
+	const classes = useStyles()
   return (
     <footer>
       <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
@@ -38,12 +39,12 @@ export default function Footer() {
                     <WhatsApp/>
                     <span className={classes.phoneText}>3121152021</span>
                   </li>
-                  <li className={classes.element}>
-                    <Link href="/faq" color="inherit" underline="hover">
-                      <Typography>
-                        PREGUNTAS FRECUENTES
-                      </Typography>
-                    </Link>
+                  <li className={classes.phoneElement}>
+                    <LinkRouter
+                      to="faq"
+                      style={{ color: 'inherit', textDecoration: 'none' }}>
+                        Preguntas frecuentes
+                    </LinkRouter>
                   </li>
                 </ul>
               </Grid>
