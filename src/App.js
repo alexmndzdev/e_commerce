@@ -2,8 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { commerce } from './lib/commerce'
 import { Products, Navbar, Cart, Checkout, Footer, Faq } from './components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import makeStyles from '@mui/styles/makeStyles'
 import { ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material/styles'
 const theme = createTheme()
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    maxHeight: 'calc(100vh - 200px)', 
+    overflowY: 'auto'
+  },
+}))
 
 const App = () => {
 				const [products, setProducts] = useState([])
@@ -50,11 +59,13 @@ const App = () => {
 					fetchCart()
 				}, [])
 
+				const classes = useStyles()
+
 				return (
 					<StyledEngineProvider injectFirst>
 						<ThemeProvider theme={theme}>
 							<Router>
-								<div>
+								<div className={classes.root}>
 									<Navbar totalItems={cart.total_items} />
 									<Switch>
 											<Route exact path='/'>
