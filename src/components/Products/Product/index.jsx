@@ -5,7 +5,7 @@ import { AddShoppingCart } from '@mui/icons-material'
 import useStyles from './style'
 
 const Product = ({ product, onAddToCart }) => {
-	const classes = useStyles();
+	const classes = useStyles()
 
 	return (
 	<Card className={classes.root}>
@@ -33,7 +33,7 @@ const Product = ({ product, onAddToCart }) => {
 			</IconButton>
 		</CardActions>
 	</Card>
-	);
+	)
 }
 
 export default Product

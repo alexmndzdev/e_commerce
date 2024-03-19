@@ -1,6 +1,7 @@
 import React from 'react'
 //import { Stepper, Step, StepLabel, Typography } from '@mui/material'
-import useStyles from './styles'
+import useStyles from './styles.js'
+import AddressForm from './AddressForm'
 
 //const steps = ['Dirección de envio', 'Detalle de Pago']
 
@@ -9,6 +10,7 @@ const Checkout = () => {
 	return (
 		<>
 			<div className={classes.toolbar} />
+			<AddressForm/>
 		</>
 	)
 }
