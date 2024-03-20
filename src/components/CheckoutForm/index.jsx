@@ -5,12 +5,12 @@ import AddressForm from './AddressForm'
 
 //const steps = ['Dirección de envio', 'Detalle de Pago']
 
-const Checkout = () => {
+const Checkout = ({ cart }) => {
 	const classes = useStyles()
 	return (
 		<>
 			<div className={classes.toolbar} />
-			<AddressForm/>
+			<AddressForm items={cart.line_items} />
 		</>
 	)
 }

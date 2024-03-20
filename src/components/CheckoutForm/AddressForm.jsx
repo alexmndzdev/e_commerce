@@ -62,7 +62,7 @@ const estadosMexico = [
   'Zacatecas'
 ];
 
-const Address = () => {
+const Address = ({ items }) => {
   const classes = useStyles();
   const [colonia, setColonia] = useState('');
   const [calle, setCalle] = useState('');
@@ -71,13 +71,15 @@ const Address = () => {
   const [selectedState, setSelectedState] = useState('');
 
   const handleShippingSubmit = () => {
-    // Aquí puedes implementar la lógica para enviar la dirección de envío y el estado seleccionado
-    console.log('Colonia:', colonia);
-    console.log('Calle:', calle);
-    console.log('Ciudad:', ciudad);
-    console.log('Código Postal:', codigoPostal);
-    console.log('Estado seleccionado:', selectedState);
-    // Por ahora, solo imprime los campos en la consola
+    const MAGNOLIA_NUMBER = 523121152021
+    let itemsListMsg = ''
+    items.forEach(item => {
+      itemsListMsg += `${item.name} - ${item.quantity}\n`
+    });
+    let message = `From: Ecommerce\nBuen dia, me gustaría pedir las siguientes cajetillas: \n${itemsListMsg} \nAl domicilio: \n*${calle}, Col. ${colonia}, Cp. ${codigoPostal}, ${ciudad}, ${selectedState}*`
+    message = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/${MAGNOLIA_NUMBER}/?text=${message}`
+    window.location.href = whatsappUrl
   };
 
   const handleColoniaChange = (event) => {
@@ -102,7 +104,10 @@ const Address = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h5">Envío a toda la República Mexicana</Typography>
+      <Typography
+        mb={2}
+        variant="h4"
+        align="center">Envío a toda la República Mexicana</Typography>
       <TextField
         className={classes.textField}
         label="Colonia"
