@@ -1,12 +1,29 @@
-//import {Typography, Grid} from '@mui/material'
-//import {useForm, FormProvider} from 'react-hook-form'
-
 import React, { useState } from 'react'
-import { TextField, Button, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import {
+  TextField,
+  Button,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Container,
+  Box
+} from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '75vh'
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+  },
+  form: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -62,7 +79,7 @@ const estadosMexico = [
   'Zacatecas'
 ];
 
-const Address = () => {
+const Address = ({ items }) => {
   const classes = useStyles();
   const [colonia, setColonia] = useState('');
   const [calle, setCalle] = useState('');
@@ -71,13 +88,15 @@ const Address = () => {
   const [selectedState, setSelectedState] = useState('');
 
   const handleShippingSubmit = () => {
-    // Aquí puedes implementar la lógica para enviar la dirección de envío y el estado seleccionado
-    console.log('Colonia:', colonia);
-    console.log('Calle:', calle);
-    console.log('Ciudad:', ciudad);
-    console.log('Código Postal:', codigoPostal);
-    console.log('Estado seleccionado:', selectedState);
-    // Por ahora, solo imprime los campos en la consola
+    const MAGNOLIA_NUMBER = 523121152021
+    let itemsListMsg = ''
+    items.forEach(item => {
+      itemsListMsg += `${item.name} - ${item.quantity}\n`
+    });
+    let message = `From: Ecommerce\nBuen dia, me gustaría pedir las siguientes cajetillas: \n${itemsListMsg} \nAl domicilio: \n*${calle}, Col. ${colonia}, Cp. ${codigoPostal}, ${ciudad}, ${selectedState}*`
+    message = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/${MAGNOLIA_NUMBER}/?text=${message}`
+    window.location.href = whatsappUrl
   };
 
   const handleColoniaChange = (event) => {
@@ -101,61 +120,70 @@ const Address = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Typography variant="h5">Envío a toda la República Mexicana</Typography>
-      <TextField
-        className={classes.textField}
-        label="Colonia"
-        variant="outlined"
-        value={colonia}
-        onChange={handleColoniaChange}
-      />
-      <TextField
-        className={classes.textField}
-        label="Calle"
-        variant="outlined"
-        value={calle}
-        onChange={handleCalleChange}
-      />
-      <TextField
-        className={classes.textField}
-        label="Ciudad"
-        variant="outlined"
-        value={ciudad}
-        onChange={handleCiudadChange}
-      />
-      <TextField
-        className={classes.textField}
-        label="Código Postal"
-        variant="outlined"
-        value={codigoPostal}
-        onChange={handleCodigoPostalChange}
-      />
-      <FormControl variant="outlined" className={classes.select}>
-        <InputLabel id="state-select-label">Estado</InputLabel>
-        <Select
-          labelId="state-select-label"
-          id="state-select"
-          value={selectedState}
-          onChange={handleStateChange}
-          label="Estado"
-        >
-          {estadosMexico.map((estado) => (
-            <MenuItem key={estado} value={estado}>
-              {estado}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Button
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        onClick={handleShippingSubmit}
-      >
-        Enviar
-      </Button>
-    </div>
+		<>
+			<Container className={classes.container}>
+		    <Box className={classes.content} px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}>
+        <Typography
+          mb={2}
+          variant="h4"
+          align="center">Envío a toda la República Mexicana</Typography>
+        <form className={classes.form}>
+          <TextField
+            className={classes.textField}
+            label="Colonia"
+            variant="outlined"
+            value={colonia}
+            onChange={handleColoniaChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Calle"
+            variant="outlined"
+            value={calle}
+            onChange={handleCalleChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Ciudad"
+            variant="outlined"
+            value={ciudad}
+            onChange={handleCiudadChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Código Postal"
+            variant="outlined"
+            value={codigoPostal}
+            onChange={handleCodigoPostalChange}
+          />
+          <FormControl variant="outlined" className={classes.select}>
+            <InputLabel id="state-select-label">Estado</InputLabel>
+            <Select
+              labelId="state-select-label"
+              id="state-select"
+              value={selectedState}
+              onChange={handleStateChange}
+              label="Estado"
+            >
+              {estadosMexico.map((estado) => (
+                <MenuItem key={estado} value={estado}>
+                  {estado}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            onClick={handleShippingSubmit}
+          >
+            Enviar
+          </Button>
+        </form>
+      </Box>
+		</Container>
+		</>
   )
 }
 
