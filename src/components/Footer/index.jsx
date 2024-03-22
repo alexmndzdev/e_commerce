@@ -1,4 +1,11 @@
-import { Grid, Box, Link, Typography, Container, AppBar }  from '@mui/material';
+import {
+  Grid,
+  Box,
+  Link,
+  Typography,
+  Container,
+  AppBar
+}  from '@mui/material'
 import { Link  as LinkRouter } from 'react-router-dom'
 import { Instagram, WhatsApp } from '@mui/icons-material'
 import useStyles from './styles.js'
@@ -7,7 +14,7 @@ export default function Footer() {
 	const classes = useStyles()
   return (
     <footer>
-      <AppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
+      <AppBar position="static" className={classes.footer}>
         <Box
           px={{ xs: 3, sm: 10 }}
           py={{ xs: 5, sm: 5 }}

@@ -1,12 +1,29 @@
-//import {Typography, Grid} from '@mui/material'
-//import {useForm, FormProvider} from 'react-hook-form'
-
 import React, { useState } from 'react'
-import { TextField, Button, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import {
+  TextField,
+  Button,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Container,
+  Box
+} from '@mui/material'
 import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '75vh'
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+  },
+  form: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -103,64 +120,70 @@ const Address = ({ items }) => {
   };
 
   return (
-    <div className={classes.root}>
-      <Typography
-        mb={2}
-        variant="h4"
-        align="center">Envío a toda la República Mexicana</Typography>
-      <TextField
-        className={classes.textField}
-        label="Colonia"
-        variant="outlined"
-        value={colonia}
-        onChange={handleColoniaChange}
-      />
-      <TextField
-        className={classes.textField}
-        label="Calle"
-        variant="outlined"
-        value={calle}
-        onChange={handleCalleChange}
-      />
-      <TextField
-        className={classes.textField}
-        label="Ciudad"
-        variant="outlined"
-        value={ciudad}
-        onChange={handleCiudadChange}
-      />
-      <TextField
-        className={classes.textField}
-        label="Código Postal"
-        variant="outlined"
-        value={codigoPostal}
-        onChange={handleCodigoPostalChange}
-      />
-      <FormControl variant="outlined" className={classes.select}>
-        <InputLabel id="state-select-label">Estado</InputLabel>
-        <Select
-          labelId="state-select-label"
-          id="state-select"
-          value={selectedState}
-          onChange={handleStateChange}
-          label="Estado"
-        >
-          {estadosMexico.map((estado) => (
-            <MenuItem key={estado} value={estado}>
-              {estado}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Button
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        onClick={handleShippingSubmit}
-      >
-        Enviar
-      </Button>
-    </div>
+		<>
+			<Container className={classes.container}>
+		    <Box className={classes.content} px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}>
+        <Typography
+          mb={2}
+          variant="h4"
+          align="center">Envío a toda la República Mexicana</Typography>
+        <form className={classes.form}>
+          <TextField
+            className={classes.textField}
+            label="Colonia"
+            variant="outlined"
+            value={colonia}
+            onChange={handleColoniaChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Calle"
+            variant="outlined"
+            value={calle}
+            onChange={handleCalleChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Ciudad"
+            variant="outlined"
+            value={ciudad}
+            onChange={handleCiudadChange}
+          />
+          <TextField
+            className={classes.textField}
+            label="Código Postal"
+            variant="outlined"
+            value={codigoPostal}
+            onChange={handleCodigoPostalChange}
+          />
+          <FormControl variant="outlined" className={classes.select}>
+            <InputLabel id="state-select-label">Estado</InputLabel>
+            <Select
+              labelId="state-select-label"
+              id="state-select"
+              value={selectedState}
+              onChange={handleStateChange}
+              label="Estado"
+            >
+              {estadosMexico.map((estado) => (
+                <MenuItem key={estado} value={estado}>
+                  {estado}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            onClick={handleShippingSubmit}
+          >
+            Enviar
+          </Button>
+        </form>
+      </Box>
+		</Container>
+		</>
   )
 }
 
