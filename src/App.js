@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { commerce } from './lib/commerce'
-import { Categories, Navbar, Cart, Checkout, Footer, Faq } from './components'
+import { Categories, Navbar, Cart, Checkout, Footer, Faq, Products } from './components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import makeStyles from '@mui/styles/makeStyles'
 import { ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material/styles'
@@ -16,15 +16,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const App = () => {
-	const [products, setProducts] = useState([])
 	const [categories, setCategories] = useState([])
 	const [cart, setCart] = useState([])
-	console.log(products, 'products')
-
-	const fetchProducts = async () => {
-		const { data } = await commerce.products.list()
-		setProducts(data)
-	}
 
 	const fetchCategories = async () => {
 		const { data } = await commerce.categories.list()
@@ -63,20 +56,12 @@ const App = () => {
 	}
 
 	useEffect(() => {
-		fetchProducts()
 		fetchCategories()
 		fetchCart()
 	}, [])
 
 	const classes = useStyles()
-										//<Products products={products} onAddToCart={cartHandler.add} />
-
-								//<Route exact path='/cigarrillos'>
-										//<Product products={cigarrillos} />
-								//</Route>
-								//<Route exact path='/mezclas'>
-										//<Product products={mezclas} />
-								//</Route>
+	//TODO: Validate that the categories contain products, if not then disable card
 	return (
 		<StyledEngineProvider injectFirst>
 			<ThemeProvider theme={theme}>
@@ -87,6 +72,11 @@ const App = () => {
 								<Route exact path='/'>
 										<Categories categories={categories} />
 								</Route>
+								{categories.map(category => (
+								<Route key={category} exact path={'/'+category.name}>
+										<Products category={category} onAddToCart={cartHandler.add} />
+								</Route>
+								))}
 								<Route exact path='/cart'>
 										<Cart cart={cart} handler={cartHandler}/>
 								</Route>

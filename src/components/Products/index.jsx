@@ -1,19 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { commerce } from '../../lib/commerce'
 import { Grid, Typography  } from '@mui/material'
 
 import Product from './Product'
 import useStyles from './style'
 
-const Products = ({ products, onAddToCart }) => {
+const Products = ({ category, onAddToCart }) => {
+	console.log(category, 'category')
+	const [products, setProducts] = useState([])
+	const fetchProductsByCategory = async (category) => {
+		const { data } = await commerce.products.list({ category_id: category.id })
+		setProducts(data)
+	}
+	
+	useEffect(() => {
+		fetchProductsByCategory(category)
+	}, [])
+
 	const classes = useStyles()
 
 	return (
 		<main className={classes.content}>
 			<div className={classes.toolbar} />
 			<div className={classes.category} justify='center'>
-				<Typography variant="h3" align="center">Cajetillas</Typography>
+				<Typography variant="h3" align="center">{category.name}</Typography>
 				<Typography variant='body2'>
-					Contienen 10 cigarrillos con las siguientes mezclas herbales
+					{category.description}
 				</Typography>
 				<br/>
 			</div>
