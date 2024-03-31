@@ -8,10 +8,9 @@ const theme = createTheme()
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    //maxHeight: 'calc(100vh - 200px)', 
-		minHeight: '100vh',
-    overflowY: 'auto'
+		display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh'
   },
 }))
 
