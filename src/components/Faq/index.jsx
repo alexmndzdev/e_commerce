@@ -7,7 +7,7 @@ import {
   AccordionSummary,
   AccordionDetails
 }  from '@mui/material'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import useStyles from './styles.js'
 
 const Faq = () => {
@@ -43,11 +43,11 @@ const Faq = () => {
       answer: 'Los cigarrillos Oníria contienen Calea Zacatechichi, que es una planta que usaban antes los chontales para inducir a los sueños lúcidos, la planta por sí sola no te dará la seguridad de que los tendrás, es necesario realizar toda una práctica y que estos sirvan de apoyo para facilitar el objetivo. Hay quienes tienen la facilidad de tenerlos sin ninguna práctica y estos cigarros potencian el efecto de lucidez en sus sueños.'
     },
           
-  ];
+  ]
 
   return (
     <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}> 
-      <Container justifyContent='center' spacing={4}>
+      <Container className={classes.container} justifyContent='center' spacing={4}>
         <div className={classes.toolbar} />
 				<Typography variant="h3" align="center">Cigarrillos</Typography>
         <div className={classes.faqs}>
