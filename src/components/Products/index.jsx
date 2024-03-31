@@ -6,14 +6,13 @@ import Product from './Product'
 import useStyles from './style'
 
 const Products = ({ category, onAddToCart }) => {
-	console.log(category, 'category')
 	const [products, setProducts] = useState([])
 	const fetchProductsByCategory = async (category) => {
 		const { data } = await commerce.products.list({ category_id: category.id })
 		setProducts(data)
 	}
 	
-	useEffect(() => {
+	useEffect((category) => {
 		fetchProductsByCategory(category)
 	}, [])
 
