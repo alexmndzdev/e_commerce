@@ -7,7 +7,19 @@ import useStyles from './styles'
 const MainCard = ({ category }) => {
 	const classes = useStyles()
 
-	//TODO: Use react router to redirecto to avoid requests?
+	const dimOnTrue = (flag) => {
+			return {
+					opacity: flag ? 0.15 : 1,
+			}
+	}
+
+	const disableOnTrue = (flag) => {
+			return {
+					pointerEvents: flag ? 'none' : 'initial'
+			}
+	}
+
+	const categoryHadProducts = category.products > 0 ? true : false
 	return (
 	<Card
 		className={classes.root} 
@@ -16,6 +28,10 @@ const MainCard = ({ category }) => {
 				boxShadow: 20,
 				cursor: 'pointer'
 			},
+		}}
+		style={{
+				...dimOnTrue(!categoryHadProducts),
+				...disableOnTrue(!categoryHadProducts)
 		}}
 	>
 		<CardActionArea href={'/'+category.name}>

@@ -60,7 +60,6 @@ const App = () => {
 	}, [])
 
 	const classes = useStyles()
-	//TODO: Validate that the categories contain products, if not then disable card
 	return (
 		<StyledEngineProvider injectFirst>
 			<ThemeProvider theme={theme}>
