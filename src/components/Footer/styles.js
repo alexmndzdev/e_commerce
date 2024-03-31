@@ -18,12 +18,8 @@ export default makeStyles((theme) => ({
     'padding-left': '5px',
   },
   footer: {
-    position: 'absolute',
-    left: '0px',
-    width: '100%',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
-    textAlign: 'center',
-    //padding: theme.spacing(2),
+    marginTop: 'auto'
   }
 }))
