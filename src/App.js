@@ -65,7 +65,7 @@ const App = () => {
 			<ThemeProvider theme={theme}>
 				<Router>
 					<div className={classes.root}>
-						<Navbar totalItems={cart.total_items} />
+						<Navbar totalItems={cart.total_items} categories={categories} />
 						<Switch>
 								<Route exact path='/'>
 										<Categories categories={categories} />
