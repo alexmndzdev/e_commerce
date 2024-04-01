@@ -51,7 +51,7 @@ const Cart = ({ cart, handler }) => {
 	const isEmpty = !cart.line_items.length
 
 	return (
-		<Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}>
+		<Box className={classes.container} px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}>
 			<Container>
 				<div className={classes.toolbar} />
 				<Typography className={classes.title} variant="h3" gutterBottom>Carrito</Typography>

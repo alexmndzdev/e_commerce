@@ -17,7 +17,7 @@ export default function Footer() {
       <AppBar position="static" className={classes.footer}>
         <Box
           px={{ xs: 3, sm: 10 }}
-          py={{ xs: 5, sm: 5 }}
+          py={{ xs: 4, sm: 4 }}
           bgcolor="#567aac"
           color="white"
         >

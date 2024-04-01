@@ -16,12 +16,10 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '75vh'
+    minHeight: '74vh'
   },
   content: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    padding: theme.spacing(3),
+    flexGrow: 1
   },
   form: {
     display: 'flex',

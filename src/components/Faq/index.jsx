@@ -46,8 +46,8 @@ const Faq = () => {
   ]
 
   return (
-    <Box px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}> 
-      <Container className={classes.container} justifyContent='center' spacing={4}>
+    <Box className={classes.container} px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}> 
+      <Container justifyContent='center' spacing={4}>
         <div className={classes.toolbar} />
 				<Typography variant="h3" align="center">Cigarrillos</Typography>
         <div className={classes.faqs}>
