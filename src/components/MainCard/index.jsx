@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { Card, CardActionArea, CardContent, CardMedia, Typography, IconButton } from '@mui/material'
 import { ArrowForward } from '@mui/icons-material'
 
@@ -6,6 +7,7 @@ import useStyles from './styles'
 
 const MainCard = ({ category }) => {
 	const classes = useStyles()
+	const history = useHistory()
 
 	const dimOnTrue = (flag) => {
 			return {
@@ -34,7 +36,7 @@ const MainCard = ({ category }) => {
 				...disableOnTrue(!categoryHadProducts)
 		}}
 	>
-		<CardActionArea href={'/'+category.name}>
+		<CardActionArea onClick={() => history.push('/'+category.name)}>
 			<CardMedia
 				className={classes.media}
 				image={category.assets[0].url}
