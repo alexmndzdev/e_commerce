@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Typography  } from '@mui/material'
+import { Grid, Typography, Box } from '@mui/material'
 
 import MainCard from '../MainCard'
 import useStyles from './styles'
@@ -8,8 +8,10 @@ const Categories = ({ categories }) => {
 	const classes = useStyles()
 
 	return (
-		<main className={classes.content}>
-			<div className={classes.toolbar} />
+		<Box className={classes.content}
+			px={{ xs: 3, sm: 15 }}
+			py={{ xs: 10, sm: 15 }}
+		> 
 			<div className={classes.category} justify='center'>
 				<Typography variant="h3" align="center" pb={5}>Productos Herbales</Typography>
 			</div>
@@ -29,7 +31,7 @@ const Categories = ({ categories }) => {
 					</Grid>
 				))}
 			</Grid>
-		</main>
+		</Box>
 	)
 }
 
