@@ -17,7 +17,8 @@ const MainCard = ({ category }) => {
 
 	const disableOnTrue = (flag) => {
 			return {
-					pointerEvents: flag ? 'none' : 'initial'
+					pointerEvents: flag ? 'none' : 'initial',
+					cursor: flag ? 'not-allowed' : 'initial'
 			}
 	}
 
@@ -47,9 +48,10 @@ const MainCard = ({ category }) => {
 						{category.name}
 					</Typography>
 					<IconButton
-						aria-label='Add to Cart'
+						component='span'
+						aria-label='Go'
 						size="large">
-						<ArrowForward/>
+						<ArrowForward />
 					</IconButton>
 				</div>
 			</CardContent>

@@ -1,16 +1,29 @@
-import React from 'react'
-import { Card, CardMedia, CardContent, CardActions, Typography, IconButton } from '@mui/material'
+import React, { useState } from 'react'
+import {
+	Card,
+	CardMedia,
+	CardContent,
+	CardActions,
+	Typography,
+	IconButton,
+	Button
+} from '@mui/material'
 import { AddShoppingCart } from '@mui/icons-material'
+import ProductDetailModal from './ProductDetailModal'
 
-import useStyles from './style'
+import useStyles from './styles'
 
 const Product = ({ product, onAddToCart }) => {
-	const classes = useStyles()
-			//<Typography
-				//dangerouslySetInnerHTML={{ __html: product.description }}
-				//variant='body2'
-				//color='textSecondary'/>
+	const [isModalOpen, setIsModalOpen] = useState(false)
+  const handleOpenModal = () => {
+		setIsModalOpen(true)
+  }
 
+  const handleCloseModal = () => {
+		setIsModalOpen(false)
+  }
+
+	const classes = useStyles()
 	return (
 	<Card className={classes.root}>
 		<CardMedia className={classes.media} image={product.media.source} title={product.name} />
@@ -25,6 +38,7 @@ const Product = ({ product, onAddToCart }) => {
 			</div>
 		</CardContent>
 		<CardActions disableSpacing className={classes.cardActions}>
+			<Button onClick={() => handleOpenModal(product)}>Ver Detalles</Button>
 			<IconButton
 				aria-label='Add to Cart'
 				onClick={() => onAddToCart(product.id, 1)}
@@ -32,6 +46,12 @@ const Product = ({ product, onAddToCart }) => {
 				<AddShoppingCart/>
 			</IconButton>
 		</CardActions>
+		<ProductDetailModal
+			open={isModalOpen}
+			product={product}
+			handleCloseModal={handleCloseModal}
+			onAddToCart={onAddToCart}
+		/>
 	</Card>
 	)
 }

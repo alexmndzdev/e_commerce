@@ -3,7 +3,7 @@ import { commerce } from '../../lib/commerce'
 import { Grid, Typography  } from '@mui/material'
 
 import Product from './Product'
-import useStyles from './style'
+import useStyles from './styles'
 
 const Products = ({ category, onAddToCart }) => {
 	console.log(category, 'category')
