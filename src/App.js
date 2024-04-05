@@ -4,7 +4,14 @@ import { Categories, Navbar, Cart, Checkout, Footer, Faq, Products } from './com
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import makeStyles from '@mui/styles/makeStyles'
 import { ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material/styles'
-const theme = createTheme()
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+			//'"Bebas Neue", sans-serif'
+			'"Montserrat", sans-serif'
+    ].join(','),
+  },
+})
 
 const useStyles = makeStyles((theme) => ({
   root: {
