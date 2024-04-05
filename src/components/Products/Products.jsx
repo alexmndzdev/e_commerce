@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@mui/material'
 
 import Product from './Product'
-import useStyles from './style'
+import useStyles from './styles'
 
 const Products = ({ products, onAddToCart }) => {
 	const classes = useStyles()
