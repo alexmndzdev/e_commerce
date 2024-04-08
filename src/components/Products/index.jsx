@@ -6,7 +6,6 @@ import Product from './Product'
 import useStyles from './styles'
 
 const Products = ({ category, onAddToCart }) => {
-	console.log(category, 'category')
 	const [products, setProducts] = useState([])
 	const fetchProductsByCategory = async (category) => {
 		const { data } = await commerce.products.list({ category_id: category.id })
@@ -14,7 +13,6 @@ const Products = ({ category, onAddToCart }) => {
 	}
 	
 	useEffect(() => {
-		console.log(category, 'category in useEffect')
 		fetchProductsByCategory(category)
 	}, [category])
 
@@ -25,9 +23,9 @@ const Products = ({ category, onAddToCart }) => {
 			<div className={classes.toolbar} />
 			<div className={classes.category} justify='center'>
 				<Typography variant="h3" align="center">{category.name}</Typography>
-				<Typography variant='body2'>
-					{category.description}
-				</Typography>
+				<Typography
+					dangerouslySetInnerHTML={{ __html: category.description }}
+					variant='body2'/>
 				<br/>
 			</div>
 			<Grid container justifyContent='center' spacing={4} py={2}>

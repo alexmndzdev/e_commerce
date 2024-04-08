@@ -1,10 +1,14 @@
 import React from 'react'
-import { Modal, IconButton, Button, Typography, Fade } from '@mui/material'
+import { Modal, Box, IconButton, Button, Typography, Fade } from '@mui/material'
 import { AddShoppingCart, Close } from '@mui/icons-material'
 import useStyles from './styles'
 
 const ProductDetailModal = ({ open, product, handleCloseModal, onAddToCart }) => {
   const classes = useStyles()
+  const handleButtonCloseClick = (event) => {
+    event.stopPropagation()
+    handleCloseModal()
+  }
 
   return (
     <Modal
@@ -24,6 +28,12 @@ const ProductDetailModal = ({ open, product, handleCloseModal, onAddToCart }) =>
     >
       <Fade in={open}>
         <div className={classes.paper}>
+          <Button
+            endIcon={<Close />}
+            onClick={handleButtonCloseClick}
+            color="error"
+            className={classes.closeButton}>
+          </Button>
           <Typography variant="body1" id="product-detail-modal-description" gutterBottom>
             Nombre: {product.name}
           </Typography>
@@ -34,17 +44,14 @@ const ProductDetailModal = ({ open, product, handleCloseModal, onAddToCart }) =>
             dangerouslySetInnerHTML={{ __html: product.description }}
             variant='body2'
             color='textSecondary'/>
-          <Button
-            startIcon={<Close />}
-            onClick={handleCloseModal} color="primary">
-            Cerrar
-          </Button>
-          <IconButton
-            aria-label='Add to Cart'
-            onClick={() => onAddToCart(product.id, 1)}
-            size="large">
-            <AddShoppingCart/>
-          </IconButton>
+          <Box display="flex" justifyContent="flex-end">
+            <IconButton
+              aria-label='Add to Cart'
+              onClick={() => onAddToCart(product.id, 1)}
+              size="large">
+              <AddShoppingCart/>
+            </IconButton>
+          </Box>
         </div>
       </Fade>
     </Modal>
