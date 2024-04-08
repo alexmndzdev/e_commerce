@@ -12,7 +12,7 @@ const Categories = ({ categories }) => {
 			px={{ xs: 3, sm: 15 }}
 			py={{ xs: 10, sm: 15 }}
 		> 
-			<div className={classes.category} justify='center'>
+			<div justify='center'>
 				<Typography variant="h3" align="center" pb={5}>Productos Herbales</Typography>
 			</div>
 			<Grid

@@ -46,9 +46,12 @@ const Faq = () => {
   ]
 
   return (
-    <Box className={classes.container} px={{ xs: 3, sm: 10 }} py={{ xs: 5, sm: 5 }}> 
-      <Container justifyContent='center' spacing={4}>
-        <div className={classes.toolbar} />
+    <Box
+      className={classes.container}
+			px={{ xs: 3, sm: 15 }}
+			py={{ xs: 10, sm: 15 }}
+    > 
+      <Container spacing={4}>
 				<Typography variant="h3" align="center">Cigarrillos</Typography>
         <div className={classes.faqs}>
           {faqs.map((faq, index) => (
