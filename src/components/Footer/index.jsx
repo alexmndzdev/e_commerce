@@ -44,13 +44,22 @@ export default function Footer() {
                   </li>
                   <li className={classes.phoneElement}>
                     <WhatsApp/>
-                    <span className={classes.phoneText}>3121152021</span>
+                    <a href="https://wa.me/523121152021/?text=">
+                      <span className={classes.phoneText}>3121152021</span>
+                    </a>
                   </li>
                   <li className={classes.phoneElement}>
                     <LinkRouter
-                      to="faq"
+                      to="preguntas-frecuentes"
                       style={{ color: 'inherit', textDecoration: 'none' }}>
                         Preguntas frecuentes
+                    </LinkRouter>
+                  </li>
+                  <li className={classes.phoneElement}>
+                    <LinkRouter
+                      to="acerca-de-nosotros"
+                      style={{ color: 'inherit', textDecoration: 'none' }}>
+                        Acerca de nosotros
                     </LinkRouter>
                   </li>
                 </ul>
@@ -60,5 +69,5 @@ export default function Footer() {
         </Box>
       </AppBar>
     </footer>
-  );
+  )
 }

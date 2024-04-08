@@ -78,44 +78,47 @@ const estadosMexico = [
 ];
 
 const Address = ({ items }) => {
-  const classes = useStyles();
-  const [colonia, setColonia] = useState('');
-  const [calle, setCalle] = useState('');
-  const [ciudad, setCiudad] = useState('');
-  const [codigoPostal, setCodigoPostal] = useState('');
-  const [selectedState, setSelectedState] = useState('');
+  const classes = useStyles()
+  const [colonia, setColonia] = useState('')
+  const [calle, setCalle] = useState('')
+  const [ciudad, setCiudad] = useState('')
+  const [codigoPostal, setCodigoPostal] = useState('')
+  const [selectedState, setSelectedState] = useState('')
 
-  const handleShippingSubmit = () => {
+  const handleShippingSubmit = (event) => {
+    event.preventDefault()
     const MAGNOLIA_NUMBER = 523121152021
     let itemsListMsg = ''
     items.forEach(item => {
       itemsListMsg += `${item.name} - ${item.quantity}\n`
-    });
+    })
     let message = `From: Ecommerce\nBuen dia, me gustaría pedir las siguientes cajetillas: \n${itemsListMsg} \nAl domicilio: \n*${calle}, Col. ${colonia}, Cp. ${codigoPostal}, ${ciudad}, ${selectedState}*`
     message = encodeURIComponent(message)
     const whatsappUrl = `https://wa.me/${MAGNOLIA_NUMBER}/?text=${message}`
     window.location.href = whatsappUrl
-  };
+  }
 
   const handleColoniaChange = (event) => {
     setColonia(event.target.value);
-  };
+  }
 
   const handleCalleChange = (event) => {
     setCalle(event.target.value);
-  };
+  }
 
   const handleCiudadChange = (event) => {
     setCiudad(event.target.value);
-  };
+  }
 
   const handleCodigoPostalChange = (event) => {
     setCodigoPostal(event.target.value);
-  };
+  }
 
   const handleStateChange = (event) => {
     setSelectedState(event.target.value);
-  };
+  }
+
+  //const isFormValid = colonia && calle && ciudad && codigoPostal && selectedState
 
   return (
 		<>
@@ -125,13 +128,14 @@ const Address = ({ items }) => {
           mb={2}
           variant="h4"
           align="center">Envío a toda la República Mexicana</Typography>
-        <form className={classes.form}>
+        <form className={classes.form} onSubmit={handleShippingSubmit}>>
           <TextField
             className={classes.textField}
             label="Colonia"
             variant="outlined"
             value={colonia}
             onChange={handleColoniaChange}
+            required
           />
           <TextField
             className={classes.textField}
@@ -139,6 +143,7 @@ const Address = ({ items }) => {
             variant="outlined"
             value={calle}
             onChange={handleCalleChange}
+            required
           />
           <TextField
             className={classes.textField}
@@ -146,6 +151,7 @@ const Address = ({ items }) => {
             variant="outlined"
             value={ciudad}
             onChange={handleCiudadChange}
+            required
           />
           <TextField
             className={classes.textField}
@@ -153,6 +159,7 @@ const Address = ({ items }) => {
             variant="outlined"
             value={codigoPostal}
             onChange={handleCodigoPostalChange}
+            required
           />
           <FormControl variant="outlined" className={classes.select}>
             <InputLabel id="state-select-label">Estado</InputLabel>
@@ -162,6 +169,7 @@ const Address = ({ items }) => {
               value={selectedState}
               onChange={handleStateChange}
               label="Estado"
+              required
             >
               {estadosMexico.map((estado) => (
                 <MenuItem key={estado} value={estado}>
@@ -171,13 +179,14 @@ const Address = ({ items }) => {
             </Select>
           </FormControl>
           <Button
-            className={classes.button}
-            variant="contained"
-            color="primary"
-            onClick={handleShippingSubmit}
-          >
-            Enviar
-          </Button>
+              className={classes.button}
+              variant="contained"
+              color="primary"
+              type="submit"
+              //disabled={!isFormValid}
+            >
+              Enviar
+            </Button>
         </form>
       </Box>
 		</Container>

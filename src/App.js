@@ -1,9 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { commerce } from './lib/commerce'
-import { Categories, Navbar, Cart, Checkout, Footer, Faq, Products } from './components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import {
+	Categories,
+	Navbar,
+	Cart,
+	Checkout,
+	Footer,
+	Faq,
+	Products,
+	About
+} from './components'
+import { commerce } from './lib/commerce'
+
 import makeStyles from '@mui/styles/makeStyles'
 import { ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material/styles'
+
 const theme = createTheme({
   typography: {
     fontFamily: [
@@ -82,14 +93,17 @@ const App = () => {
 										<Products category={category} onAddToCart={cartHandler.add} />
 								</Route>
 								))}
-								<Route exact path='/cart'>
+								<Route exact path='/carrito'>
 										<Cart cart={cart} handler={cartHandler}/>
 								</Route>
-								<Route exact path='/checkout'>
+								<Route exact path='/caja'>
 										<Checkout cart={cart}/>
 								</Route>
-								<Route exact path='/faq'>
+								<Route exact path='/preguntas-frecuentes'>
 										<Faq/>
+								</Route>
+								<Route exact path='/acerca-de-nosotros'>
+										<About/>
 								</Route>
 						</Switch>
 						<Footer />
