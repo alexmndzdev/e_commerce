@@ -39,7 +39,7 @@ const Cart = ({ cart, handler }) => {
 					>
 						Vaciar carrito
 					</Button>
-					<Button component={Link} to="/checkout" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">
+					<Button component={Link} to="/caja" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">
 						Ir a caja
 					</Button>
 				</div>
