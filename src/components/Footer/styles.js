@@ -9,12 +9,12 @@ export default makeStyles((theme) => ({
   element: {
     'padding-top': '8px',
   },
-  phoneElement: {
+  icon: {
     'padding-top': '8px',
     display: 'flex',
     alignItems: 'center'
   }, 
-  phoneText: {
+  iconText: {
     'padding-left': '5px',
   },
   footer: {

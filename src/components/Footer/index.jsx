@@ -1,13 +1,18 @@
 import {
   Grid,
   Box,
-  Link,
+  Link as MuiLink,
   Typography,
   Container,
   AppBar
 }  from '@mui/material'
-import { Link  as LinkRouter } from 'react-router-dom'
-import { Instagram, WhatsApp } from '@mui/icons-material'
+import { Link as RouterLink } from 'react-router-dom'
+import {
+  Instagram,
+  WhatsApp,
+  InfoOutlined,
+  HelpOutline
+} from '@mui/icons-material'
 import useStyles from './styles.js'
 
 export default function Footer() {
@@ -31,36 +36,54 @@ export default function Footer() {
                 </Box>
                 <ul className={classes.list}>
                   <li>
-                    <Link
-                      className={classes.phoneElement}
+                    <MuiLink
+                      className={classes.icon}
                       href="https://www.instagram.com/magnolia_herbal/"
                       color="inherit"
                       underline="hover">
                       <Instagram/>
-                      <span className={classes.phoneText}>
+                      <span className={classes.iconText}>
                         @magnolia_herbal
                       </span>
-                    </Link>
+                    </MuiLink>
                   </li>
-                  <li className={classes.phoneElement}>
-                    <WhatsApp/>
-                    <a href="https://wa.me/523121152021/?text=">
-                      <span className={classes.phoneText}>3121152021</span>
-                    </a>
+                  <li>
+                    <MuiLink
+                      className={classes.icon}
+                      href="https://wa.me/523121152021/?text="
+                      color="inherit"
+                      underline="hover">
+                      <WhatsApp/>
+                      <span className={classes.iconText}>
+                        3121152021
+                      </span>
+                    </MuiLink>
                   </li>
-                  <li className={classes.phoneElement}>
-                    <LinkRouter
-                      to="preguntas-frecuentes"
-                      style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <li>
+                    <MuiLink
+                      component={RouterLink}
+                      to="/preguntas-frecuentes"
+                      className={classes.icon}
+                      color="inherit"
+                      underline="hover">
+                      <HelpOutline/>
+                      <span className={classes.iconText}>
                         Preguntas frecuentes
-                    </LinkRouter>
+                      </span>
+                    </MuiLink>
                   </li>
-                  <li className={classes.phoneElement}>
-                    <LinkRouter
-                      to="acerca-de-nosotros"
-                      style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <li>
+                    <MuiLink
+                      component={RouterLink}
+                      to="/acerca-de-nosotros"
+                      className={classes.icon}
+                      color="inherit"
+                      underline="hover">
+                      <InfoOutlined/>
+                      <span className={classes.iconText}>
                         Acerca de nosotros
-                    </LinkRouter>
+                      </span>
+                    </MuiLink>
                   </li>
                 </ul>
               </Grid>
