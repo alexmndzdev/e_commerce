@@ -1,4 +1,5 @@
 import { Typography, Container, Button, Grid, Box } from '@mui/material'
+import { DeleteOutline } from '@mui/icons-material'
 import React from 'react'
 import useStyles from './styles.js'
 import CartItem from './CartItem'
@@ -37,10 +38,11 @@ const Cart = ({ cart, handler }) => {
 						color="secondary"
 						onClick={handler.empty}
 					>
-						Vaciar carrito
+						<DeleteOutline/>
+						Vaciar
 					</Button>
 					<Button component={Link} to="/caja" className={classes.checkoutButton} size="large" type="button" variant="contained" color="primary">
-						Ir a caja
+						Siguiente
 					</Button>
 				</div>
 			</div>

@@ -5,10 +5,6 @@ import useStyles from './styles'
 
 const ProductDetailModal = ({ open, product, handleCloseModal, onAddToCart }) => {
   const classes = useStyles()
-  const handleButtonCloseClick = (event) => {
-    event.stopPropagation()
-    handleCloseModal()
-  }
 
   return (
     <Modal
@@ -30,7 +26,7 @@ const ProductDetailModal = ({ open, product, handleCloseModal, onAddToCart }) =>
         <div className={classes.paper}>
           <Button
             endIcon={<Close />}
-            onClick={handleButtonCloseClick}
+            onClick={handleCloseModal}
             color="error"
             className={classes.closeButton}>
           </Button>

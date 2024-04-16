@@ -38,21 +38,24 @@ const Product = ({ product, onAddToCart }) => {
 					</Typography>
 				</div>
 			</CardContent>
-			<CardActions disableSpacing className={classes.cardActions}>
-				<IconButton
-					aria-label='Add to Cart'
-					onClick={() => onAddToCart(product.id, 1)}
-					size="large">
-					<AddShoppingCart/>
-				</IconButton>
-			</CardActions>
-			<ProductDetailModal
-				open={isModalOpen}
-				product={product}
-				handleCloseModal={handleCloseModal}
-				onAddToCart={onAddToCart}
-			/>
 		</CardActionArea>
+		<CardActions disableSpacing className={classes.cardActions}>
+			<IconButton
+				aria-label='Add to Cart'
+				onClick={(event) => { 
+					event.stopPropagation()
+					return onAddToCart(product.id, 1) }
+				}
+				size="medium">
+				<AddShoppingCart/>
+			</IconButton>
+		</CardActions>
+		<ProductDetailModal
+			open={isModalOpen}
+			product={product}
+			handleCloseModal={handleCloseModal}
+			onAddToCart={onAddToCart}
+		/>
 	</Card>
 	)
 }
